@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="简介Nginx(“engine X”)是一个高性能的HTTP和反向代理服务器。Nginx有一个主线程和几个工作线程，主线程主要负责加载和验证配置文件、维护工作线程。工作线程处理实际的请求，Nginx采用基于事件的模型和依赖操作系统的机制在工作线程之间高效的分发请求。 Nginx及其模块的工作方式由配置文件确定。 默认情">
+<meta name="description" content="简介Nginx(“engine X”)是一个高性能的HTTP和反向代理服务器。Nginx有一个主线程和几个工作线程，主线程主要负责加载和验证配置文件、维护工作线程。工作线程处理实际的请求，Nginx采用基于事件的模型和依赖操作系统的机制在工作线程之间高效的分发请求。默认情况下，工作线程数量为cpu的核心数。工作线程比较">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识Nginx">
 <meta property="og:url" content="https://jings2015.github.io/2018/02/01/初识Nginx/index.html">
 <meta property="og:site_name" content="Prometheus">
-<meta property="og:description" content="简介Nginx(“engine X”)是一个高性能的HTTP和反向代理服务器。Nginx有一个主线程和几个工作线程，主线程主要负责加载和验证配置文件、维护工作线程。工作线程处理实际的请求，Nginx采用基于事件的模型和依赖操作系统的机制在工作线程之间高效的分发请求。 Nginx及其模块的工作方式由配置文件确定。 默认情况下，配置文件名为 nginx.conf，放在 /usr/local/nginx">
+<meta property="og:description" content="简介Nginx(“engine X”)是一个高性能的HTTP和反向代理服务器。Nginx有一个主线程和几个工作线程，主线程主要负责加载和验证配置文件、维护工作线程。工作线程处理实际的请求，Nginx采用基于事件的模型和依赖操作系统的机制在工作线程之间高效的分发请求。默认情况下，工作线程数量为cpu的核心数。工作线程比较繁忙是实际处理请求的线程。而主线程相对比较“清闲”，主线程拥有更高的权限，负责维">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-01T16:22:16.222Z">
+<meta property="og:updated_time" content="2018-02-03T16:54:49.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识Nginx">
-<meta name="twitter:description" content="简介Nginx(“engine X”)是一个高性能的HTTP和反向代理服务器。Nginx有一个主线程和几个工作线程，主线程主要负责加载和验证配置文件、维护工作线程。工作线程处理实际的请求，Nginx采用基于事件的模型和依赖操作系统的机制在工作线程之间高效的分发请求。 Nginx及其模块的工作方式由配置文件确定。 默认情况下，配置文件名为 nginx.conf，放在 /usr/local/nginx">
+<meta name="twitter:description" content="简介Nginx(“engine X”)是一个高性能的HTTP和反向代理服务器。Nginx有一个主线程和几个工作线程，主线程主要负责加载和验证配置文件、维护工作线程。工作线程处理实际的请求，Nginx采用基于事件的模型和依赖操作系统的机制在工作线程之间高效的分发请求。默认情况下，工作线程数量为cpu的核心数。工作线程比较繁忙是实际处理请求的线程。而主线程相对比较“清闲”，主线程拥有更高的权限，负责维">
 
 
 
@@ -361,7 +361,10 @@
       
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Nginx(“engine X”)是一个高性能的HTTP和反向代理服务器。<br>Nginx有一个主线程和几个工作线程，主线程主要负责加载和验证配置文件、维护工作线程。<br>工作线程处理实际的请求，Nginx采用基于事件的模型和依赖操作系统的机制在工作线程之间高效的分发请求。</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Nginx(“engine X”)是一个高性能的HTTP和反向代理服务器。<br>Nginx有一个主线程和几个工作线程，主线程主要负责加载和验证配置文件、维护工作线程。<br>工作线程处理实际的请求，Nginx采用基于事件的模型和依赖操作系统的机制在工作线程之间高效的分发请求。默认情况下，工作线程数量为cpu的核心数。<br>工作线程比较繁忙是实际处理请求的线程。而主线程相对比较“清闲”，主线程拥有更高的权限，负责维护工作线程。<br>是否使用主线程-工作线程的模式是可选的，通过修改配置文件可以只启动主线程，同时让主线程来处理请求。</p>
+<blockquote>
+<p>具体配置为：master_process on|off</p>
+</blockquote>
 <p>Nginx及其模块的工作方式由配置文件确定。 默认情况下，配置文件名为 nginx.conf，放在 /usr/local/nginx/conf 、/etc/nginx 或者 /usr/local/etc/nginx 文件夹中。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>略</p>
 <h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><blockquote>
@@ -375,13 +378,43 @@
 <li>reopen 重新打开日志文件</li>
 </ul>
 <p>执行上面任意命令，Nginx都会校验配置文件，如果配置文件有错误就不会执行命令。<br>reload命令中如果配置文件正确，主线程会开启新的工作检查，并向旧的工作线程发送关闭的指令。</p>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>Nginx配置的核心是定义要处理的URL以及如何响应这些URL请求，即定义一系列的虚拟服务器(virtual server)。</p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>Nginx配置文件是一个普通文件，默认为conf文件件下的nginx.conf文件。如下：</p>
+<blockquote>
+<p>user  nobody;</p>
+<p>worker_processes  8;</p>
+<p>error_log  /var/log/nginx/error.log error;</p>
+<p>#pid           logs/nginx.pid;</p>
+<p>events {</p>
+<p>​    use epoll;</p>
+<p>​    worker_connections  50000;</p>
+<p>}</p>
+<p>http {</p>
+<p>​    include       mime.types;</p>
+<p>​    default_type  application/octet-stream;</p>
+<p>​    log_format  main  ‘$remote_addr [$time_local] “$request” ‘</p>
+<p>​                      ‘$status $bytes_sent “$http_referer” ‘</p>
+<p>​                      ‘“$http_user_agent” “$http_x_forwarded_for”‘;</p>
+<p>​    access_log  logs/access.log  main buffer=32k;</p>
+<p>​    …</p>
+<p>｝</p>
+</blockquote>
+<h3 id="块配置项"><a href="#块配置项" class="headerlink" title="块配置项"></a>块配置项</h3><p>块配置项由一个块配置项名和一对大括号组成，events、http、server、location、upstream等都是块配置项。<br>块配置项可以嵌套，内层直接继承外层块。内外层块配置发生冲突时，一般以内层块的配置为准。</p>
+<h4 id="配置项语法格式"><a href="#配置项语法格式" class="headerlink" title="配置项语法格式"></a>配置项语法格式</h4><blockquote>
+<p>配置项名 配置项值1 配置项值2 …;</p>
+</blockquote>
+<p>首先在行首的是配置项名，这些配置项名必须是Nginx的某一个模块想要处理的，否则Nginx会认为配置文件出错了。配置项名结束后以空格作为分隔符。</p>
+<p>其次是配置项值，可以是数字或字符，也可以有多个(根据每个配置项的模块来)，同样以空格分隔。</p>
+<p>最后，以分号结尾。</p>
+<blockquote>
+<p>如果配置项值中出现了语法符号，那么需要用单引号或双引号包裹。</p>
+</blockquote>
+<p>Nginx配置的核心是定义要处理的URL以及如何响应这些URL请求，即定义一系列的虚拟服务器(virtual server)。</p>
 <p>每一个虚拟服务器定义一系列的location来处理特定的URI集合。每一个location定义匹配规则，并定义如何处理请求，可以返回文件或者代理次请求。</p>
 <p>Nginx由不同的模块组成，这些模块由配置文件中指定的指令控制。指令分为简单指令和块指令。</p>
 <p>一个简单的指令包含<strong>指令名称</strong>和<strong>指令参数</strong> ，以空格分隔，以分号结尾。<br>块指令与简单指令类似，但是由大括号包围。如果块指令大括号中包含其他指令，则称该指令为上下文。</p>
 <p>配置文件中放在上下文之外的指令默认放在<strong>主配置文件</strong>中(类似继承主配置文件)。events和http放在主配置文件中，server放置在http块指令中，location放置在server块指令中。</p>
 <p>配置文件的注释以#开始。</p>
-<p>未完待续。。。</p>
+<h3 id="块配置项-1"><a href="#块配置项-1" class="headerlink" title="块配置项"></a>块配置项</h3><p>未完待续。。。</p>
 
       
     </div>
@@ -548,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本命令"><span class="nav-number">3.</span> <span class="nav-text">基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件"><span class="nav-number">4.</span> <span class="nav-text">配置文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本命令"><span class="nav-number">3.</span> <span class="nav-text">基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件"><span class="nav-number">4.</span> <span class="nav-text">配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#块配置项"><span class="nav-number">4.1.</span> <span class="nav-text">块配置项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置项语法格式"><span class="nav-number">4.1.1.</span> <span class="nav-text">配置项语法格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块配置项-1"><span class="nav-number">4.2.</span> <span class="nav-text">块配置项</span></a></li></ol></li></ol></div>
             
 
           </div>
