@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Spring Boot是什么从根本上来讲Spring Boot就是一些库的集合，是一个基于“约定优于配置”的原则，快速搭建应用的框架。本质上依然Spring，在这之上帮我们省去了很多样板化的配置，使得我们能够更专注于应用程序功能的开发。 Spring Boot精要SpringBoot将很多魔法带入了Spring应用程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot入门（一）——开箱即用">
+<meta property="og:url" content="https://jings2015.github.io/2018/02/23/SpringBoot入门（一）——开箱即用/index.html">
+<meta property="og:site_name" content="Prometheus">
+<meta property="og:description" content="Spring Boot是什么从根本上来讲Spring Boot就是一些库的集合，是一个基于“约定优于配置”的原则，快速搭建应用的框架。本质上依然Spring，在这之上帮我们省去了很多样板化的配置，使得我们能够更专注于应用程序功能的开发。 Spring Boot精要SpringBoot将很多魔法带入了Spring应用程序的开发之中，其中最重要的是以下四个核心  自动配置：针对常见的应用功能，Spri">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-214853.png">
+<meta property="og:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-215112.png">
+<meta property="og:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-215257.png">
+<meta property="og:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-224751.png">
+<meta property="og:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-223819.png">
+<meta property="og:updated_time" content="2018-03-11T15:13:30.908Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot入门（一）——开箱即用">
+<meta name="twitter:description" content="Spring Boot是什么从根本上来讲Spring Boot就是一些库的集合，是一个基于“约定优于配置”的原则，快速搭建应用的框架。本质上依然Spring，在这之上帮我们省去了很多样板化的配置，使得我们能够更专注于应用程序功能的开发。 Spring Boot精要SpringBoot将很多魔法带入了Spring应用程序的开发之中，其中最重要的是以下四个核心  自动配置：针对常见的应用功能，Spri">
+<meta name="twitter:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-214853.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jings2015.github.io/2018/02/23/SpringBoot入门（一）——开箱即用/"/>
+
+
+
+
+
+  <title>SpringBoot入门（一）——开箱即用 | Prometheus</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Prometheus</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">..</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jings2015.github.io/2018/02/23/SpringBoot入门（一）——开箱即用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jings">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prometheus">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SpringBoot入门（一）——开箱即用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-23T20:09:39+08:00">
+                2018-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringBoot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Spring-Boot是什么"><a href="#Spring-Boot是什么" class="headerlink" title="Spring Boot是什么"></a>Spring Boot是什么</h2><p>从根本上来讲Spring Boot就是一些库的集合，是一个基于“约定优于配置”的原则，快速搭建应用的框架。本质上依然Spring，在这之上帮我们省去了很多样板化的配置，使得我们能够更专注于应用程序功能的开发。</p>
+<h2 id="Spring-Boot精要"><a href="#Spring-Boot精要" class="headerlink" title="Spring Boot精要"></a>Spring Boot精要</h2><p>SpringBoot将很多魔法带入了Spring应用程序的开发之中，其中最重要的是以下四个核心</p>
+<ul>
+<li>自动配置：针对常见的应用功能，SpringBoot自动提供相关的配置，减少用于样板化配置的时间</li>
+<li>起步依赖：指定基于功能的依赖，用更大粒度的依赖来降低依赖的复杂度</li>
+<li>命令行界面：这是SpringBoot的可选特性，借此你只需要写代码就能完成完整的应用程序，无需传统项目构建</li>
+<li>Actuator：让你能够深入运行中的SpringBoot应用程序一探究竟</li>
+</ul>
+<h2 id="从Spring开始"><a href="#从Spring开始" class="headerlink" title="从Spring开始"></a>从Spring开始</h2><p>为了体现SpringBoot的优势，我们先来看看如果使用Spring开发一个简单的Hello World Web应用程序，我们需要做的事情：</p>
+<ul>
+<li>一个项目结构，其中有一个包含必要依赖的Maven或者Gradle构件文件，最起码要有Spring MVC和Servlet API这些依赖</li>
+<li>一个web.xml文件(或者一个WebApplicationInitializer实现)，其中声明了Spring的DispatcherServlet</li>
+<li>一个启用Spring MVC的Spring配置</li>
+<li>一个控制器类，以”Hello World”响应HTTP请求</li>
+<li>一个用于部署应用程序的Web应用服务器，比如Tomcat</li>
+</ul>
+<p>可以看到上面一系列的事中只有编写控制器是和HelloWorld功能相关的，虽然现代的IDE也能帮我们简化掉一些步骤，但是Spring相关的配置就算从别的工程拷贝也还是逃不了这一步。</p>
+<p>接下来让我们来看下用Spring Boot是什么样的情况。</p>
+<h2 id="Spring-Boot开箱即用"><a href="#Spring-Boot开箱即用" class="headerlink" title="Spring Boot开箱即用"></a>Spring Boot开箱即用</h2><blockquote>
+<p>你上次在超市或大型零售商店自己推开门是什么时候？大多数大型商店都安装了带感应功能的自动门，虽然所有门都能让你进入建筑物内，但自动门不用你动手推拉。<br>与之类似，很多公共场所的卫生间里都装有自动感应水龙头和自动感应纸巾机。虽然没有超市自动门这么普及，但这些设施同样对你没有太多要求，可以很方便地出水和纸巾。<br>我敢打赌你也能想出无数例子，证明设备让现代生活更加自动化，而不是增加障碍。</p>
+</blockquote>
+<p>下面通过一个例子来展示Spring Boot是如何开箱即用的。<br>依然是Hello World Web项目，我们来看下如何用InteliJ IDEA来创建。<br>点击IDEA的File-New-Project…，选择左边选项卡中的Spring Initializr，可以看到如下界面。<br><img src="/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-214853.png" alt="New Project"></p>
+<p>使用默认的<a href="https://start.spring.io，这将会连接网络，查询Spring" target="_blank" rel="noopener">https://start.spring.io，这将会连接网络，查询Spring</a> Boot当前可用版本和组件列表。（当前时间用的是Spring Boot的2.0.0.RELEASE）</p>
+<p>Next-输入项目信息-Next，来到选择起步依赖界面，如下：<br><img src="/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-215112.png" alt="New Project"></p>
+<p>对于一个简单的Hello World Web项目来说，这里只用勾选Web即可(我在这里另外勾选了Thymeleaf，在窗口的最右边可以看到)。<br>在这个界面可以看到Spring Boot为我们提供的大量的起步依赖。我们所勾选的web会为我们注入Web相关的所有依赖，省去我们自己配置依赖的时间。</p>
+<p>再点击一次Next工程就新建完成了，等待下载相关的Maven依赖（第一次所花费的时间可能比较久）和IDEA创建索引。</p>
+<p>创建完成后，项目结构如下图所示：<br><img src="/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-215257.png" alt="New Project"></p>
+<p>是一个常见的Maven项目结构，比较特别的是Spring Boot为我们自动生成了2个文件，application.properties和BlogDemoApplication.java。</p>
+<p>application.properties是Spirng Boot默认的配置文件，当期是个空文件，现在不用理会后面会细讲。</p>
+<p>BlogDemoApplication.java是Spring Boot自动生成的启动类。有了这个类，现在这个项目已经是一个可以启动的Web项目了，虽然还没有任何控制器，我们依然可以试着访问默认端口8080。<br>如果IDEA没有自动创建启动配置，可以自行到Run/Debug Configurations里添加。添加时选择Spring Boot，在右边选框的”Main class”中选择自动生成的启动类，如下：<br><img src="/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-224751.png" alt="New Project"></p>
+<p>点击运行后，访问8080端口将得到Spring Boot默认的错误页：<br><img src="/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-223819.png" alt="New Project"></p>
+<p>接着就可以开发我们的功能了——Hello World。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/demo"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>很简单一个Controller，最后再次启动项目，已经能愉快的hello了！</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>回顾一下，虽然说起来好像很多，然而实际上的操作只是点点点、输入项目名、再编写一下Controller就完成了一个Hello World。仿佛回到了初学Java的年代，那时候还是Eclipse，也是点点点、输入项目名、然后编写一个main方法控制台输出一个hello。步骤相似，然而这次得到的已然是一个拥有众多Spring特性的一个Web工程。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/01/初识Nginx/" rel="next" title="初识Nginx">
+                <i class="fa fa-chevron-left"></i> 初识Nginx
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpeg"
+               alt="jings" />
+          <p class="site-author-name" itemprop="name">jings</p>
+           
+              <p class="site-description motion-element" itemprop="description">123</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot是什么"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot精要"><span class="nav-number">2.</span> <span class="nav-text">Spring Boot精要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从Spring开始"><span class="nav-number">3.</span> <span class="nav-text">从Spring开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot开箱即用"><span class="nav-number">4.</span> <span class="nav-text">Spring Boot开箱即用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jings</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
