@@ -101,16 +101,16 @@
 <meta property="og:site_name" content="Prometheus">
 <meta property="og:description" content="Spring Boot是什么从根本上来讲Spring Boot就是一些库的集合，是一个基于“约定优于配置”的原则，快速搭建应用的框架。本质上依然Spring，在这之上帮我们省去了很多样板化的配置，使得我们能够更专注于应用程序功能的开发。 Spring Boot精要SpringBoot将很多魔法带入了Spring应用程序的开发之中，其中最重要的是以下四个核心  自动配置：针对常见的应用功能，Spri">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-214853.png">
-<meta property="og:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-215112.png">
-<meta property="og:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-215257.png">
-<meta property="og:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-224751.png">
-<meta property="og:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-223819.png">
-<meta property="og:updated_time" content="2018-03-11T15:13:30.908Z">
+<meta property="og:image" content="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00001.png?raw=true">
+<meta property="og:image" content="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00003.png?raw=true">
+<meta property="og:image" content="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00004.png?raw=true">
+<meta property="og:image" content="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00007.png?raw=true">
+<meta property="og:image" content="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00006.png?raw=true">
+<meta property="og:updated_time" content="2018-03-12T16:03:00.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot入门（一）——开箱即用">
 <meta name="twitter:description" content="Spring Boot是什么从根本上来讲Spring Boot就是一些库的集合，是一个基于“约定优于配置”的原则，快速搭建应用的框架。本质上依然Spring，在这之上帮我们省去了很多样板化的配置，使得我们能够更专注于应用程序功能的开发。 Spring Boot精要SpringBoot将很多魔法带入了Spring应用程序的开发之中，其中最重要的是以下四个核心  自动配置：针对常见的应用功能，Spri">
-<meta name="twitter:image" content="https://jings2015.github.io/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-214853.png">
+<meta name="twitter:image" content="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00001.png?raw=true">
 
 
 
@@ -388,16 +388,16 @@
 <h2 id="Spring-Boot开箱即用"><a href="#Spring-Boot开箱即用" class="headerlink" title="Spring Boot开箱即用"></a>Spring Boot开箱即用</h2><blockquote>
 <p>你上次在超市或大型零售商店自己推开门是什么时候？大多数大型商店都安装了带感应功能的自动门，虽然所有门都能让你进入建筑物内，但自动门不用你动手推拉。<br>与之类似，很多公共场所的卫生间里都装有自动感应水龙头和自动感应纸巾机。虽然没有超市自动门这么普及，但这些设施同样对你没有太多要求，可以很方便地出水和纸巾。<br>我敢打赌你也能想出无数例子，证明设备让现代生活更加自动化，而不是增加障碍。</p>
 </blockquote>
-<p>下面通过一个例子来展示Spring Boot是如何开箱即用的。<br>依然是Hello World Web项目，我们来看下如何用InteliJ IDEA来创建。<br>点击IDEA的File-New-Project…，选择左边选项卡中的Spring Initializr，可以看到如下界面。<br><img src="/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-214853.png" alt="New Project"></p>
+<p>下面通过一个例子来展示Spring Boot是如何开箱即用的。<br>依然是Hello World Web项目，我们来看下如何用InteliJ IDEA来创建。<br>点击IDEA的File-New-Project…，选择左边选项卡中的Spring Initializr，可以看到如下界面。<br><img src="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00001.png?raw=true" alt="New Project"></p>
 <p>使用默认的<a href="https://start.spring.io，这将会连接网络，查询Spring" target="_blank" rel="noopener">https://start.spring.io，这将会连接网络，查询Spring</a> Boot当前可用版本和组件列表。（当前时间用的是Spring Boot的2.0.0.RELEASE）</p>
-<p>Next-输入项目信息-Next，来到选择起步依赖界面，如下：<br><img src="/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-215112.png" alt="New Project"></p>
+<p>Next-输入项目信息-Next，来到选择起步依赖界面，如下：<br><img src="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00003.png?raw=true" alt="New Project"></p>
 <p>对于一个简单的Hello World Web项目来说，这里只用勾选Web即可(我在这里另外勾选了Thymeleaf，在窗口的最右边可以看到)。<br>在这个界面可以看到Spring Boot为我们提供的大量的起步依赖。我们所勾选的web会为我们注入Web相关的所有依赖，省去我们自己配置依赖的时间。</p>
 <p>再点击一次Next工程就新建完成了，等待下载相关的Maven依赖（第一次所花费的时间可能比较久）和IDEA创建索引。</p>
-<p>创建完成后，项目结构如下图所示：<br><img src="/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-215257.png" alt="New Project"></p>
+<p>创建完成后，项目结构如下图所示：<br><img src="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00004.png?raw=true" alt="New Project"></p>
 <p>是一个常见的Maven项目结构，比较特别的是Spring Boot为我们自动生成了2个文件，application.properties和BlogDemoApplication.java。</p>
 <p>application.properties是Spirng Boot默认的配置文件，当期是个空文件，现在不用理会后面会细讲。</p>
-<p>BlogDemoApplication.java是Spring Boot自动生成的启动类。有了这个类，现在这个项目已经是一个可以启动的Web项目了，虽然还没有任何控制器，我们依然可以试着访问默认端口8080。<br>如果IDEA没有自动创建启动配置，可以自行到Run/Debug Configurations里添加。添加时选择Spring Boot，在右边选框的”Main class”中选择自动生成的启动类，如下：<br><img src="/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-224751.png" alt="New Project"></p>
-<p>点击运行后，访问8080端口将得到Spring Boot默认的错误页：<br><img src="/Users/Joy/Downloads/SpringBoot入门-pic/WX20180311-223819.png" alt="New Project"></p>
+<p>BlogDemoApplication.java是Spring Boot自动生成的启动类。有了这个类，现在这个项目已经是一个可以启动的Web项目了，虽然还没有任何控制器，我们依然可以试着访问默认端口8080。<br>如果IDEA没有自动创建启动配置，可以自行到Run/Debug Configurations里添加。添加时选择Spring Boot，在右边选框的”Main class”中选择自动生成的启动类，如下：<br><img src="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00007.png?raw=true" alt="New Project"></p>
+<p>点击运行后，访问8080端口将得到Spring Boot默认的错误页：<br><img src="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00006.png?raw=true" alt="New Project"></p>
 <p>接着就可以开发我们的功能了——Hello World。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/demo"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>很简单一个Controller，最后再次启动项目，已经能愉快的hello了！</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>回顾一下，虽然说起来好像很多，然而实际上的操作只是点点点、输入项目名、再编写一下Controller就完成了一个Hello World。仿佛回到了初学Java的年代，那时候还是Eclipse，也是点点点、输入项目名、然后编写一个main方法控制台输出一个hello。步骤相似，然而这次得到的已然是一个拥有众多Spring特性的一个Web工程。</p>
