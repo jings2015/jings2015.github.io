@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00004.png?raw=true">
 <meta property="og:image" content="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00007.png?raw=true">
 <meta property="og:image" content="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00006.png?raw=true">
-<meta property="og:updated_time" content="2018-03-12T16:03:00.952Z">
+<meta property="og:updated_time" content="2018-03-17T01:06:56.819Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot入门（一）——开箱即用">
 <meta name="twitter:description" content="Spring Boot是什么从根本上来讲Spring Boot就是一些库的集合，是一个基于“约定优于配置”的原则，快速搭建应用的框架。本质上依然Spring，在这之上帮我们省去了很多样板化的配置，使得我们能够更专注于应用程序功能的开发。 Spring Boot精要SpringBoot将很多魔法带入了Spring应用程序的开发之中，其中最重要的是以下四个核心  自动配置：针对常见的应用功能，Spri">
@@ -400,7 +400,7 @@
 <p>点击运行后，访问8080端口将得到Spring Boot默认的错误页：<br><img src="https://github.com/jings2015/blog-pic/blob/master/2018-3/12/p00006.png?raw=true" alt="New Project"></p>
 <p>接着就可以开发我们的功能了——Hello World。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/demo"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>很简单一个Controller，最后再次启动项目，已经能愉快的hello了！</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>回顾一下，虽然说起来好像很多，然而实际上的操作只是点点点、输入项目名、再编写一下Controller就完成了一个Hello World。仿佛回到了初学Java的年代，那时候还是Eclipse，也是点点点、输入项目名、然后编写一个main方法控制台输出一个hello。步骤相似，然而这次得到的已然是一个拥有众多Spring特性的一个Web工程。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>回顾一下，去掉啰嗦的介绍，实际上的操作只有点点点、输入项目名、再编写一下Controller就完成了一个Hello World。仿佛回到了初学Java的年代，那时候还是Eclipse，也是点点点、输入项目名、然后编写一个main方法控制台输出一个hello。步骤相似，然而这次得到的已然是一个拥有众多Spring特性的一个Web工程。</p>
 
       
     </div>
@@ -434,6 +434,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/17/SpringBoot入门（二）——起步依赖/" rel="prev" title="SpringBoot入门（二）——起步依赖">
+                SpringBoot入门（二）——起步依赖 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -510,7 +514,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
