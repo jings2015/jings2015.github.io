@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="SpringBoot之所以能够快速构建项目，得益于它的2个新特性，一个是起步依赖前面已经介绍过，另外一个则是自动配置。起步依赖用于降低项目依赖的复杂度，自动配置负责减少人工配置的工作量。 SpringBoot的自动配置建立在Spring已有的功能之上，通过巧妙的组合而来 @EnableAutoConfiguration">
+<meta name="description" content="SpringBoot之所以能够快速构建项目，得益于它的2个新特性，一个是起步依赖前面已经介绍过，另外一个则是自动配置。起步依赖用于降低项目依赖的复杂度，自动配置负责减少人工配置的工作量。 SpringBoot的自动配置建立在Spring已有的功能之上，通过巧妙的方式将他们组合起来。 @EnableAutoConfigu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot入门（四）——自动配置">
 <meta property="og:url" content="https://jings2015.github.io/2018/03/18/SpringBoot入门（四）——自动配置/index.html">
 <meta property="og:site_name" content="Prometheus">
-<meta property="og:description" content="SpringBoot之所以能够快速构建项目，得益于它的2个新特性，一个是起步依赖前面已经介绍过，另外一个则是自动配置。起步依赖用于降低项目依赖的复杂度，自动配置负责减少人工配置的工作量。 SpringBoot的自动配置建立在Spring已有的功能之上，通过巧妙的组合而来 @EnableAutoConfiguration前一篇留了一个注解没介绍，@EnableAutoConfiguration注解式">
+<meta property="og:description" content="SpringBoot之所以能够快速构建项目，得益于它的2个新特性，一个是起步依赖前面已经介绍过，另外一个则是自动配置。起步依赖用于降低项目依赖的复杂度，自动配置负责减少人工配置的工作量。 SpringBoot的自动配置建立在Spring已有的功能之上，通过巧妙的方式将他们组合起来。 @EnableAutoConfiguration前一篇留了一个注解没介绍，@EnableAutoConfigurat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T16:00:09.998Z">
+<meta property="og:updated_time" content="2018-03-19T05:08:08.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot入门（四）——自动配置">
-<meta name="twitter:description" content="SpringBoot之所以能够快速构建项目，得益于它的2个新特性，一个是起步依赖前面已经介绍过，另外一个则是自动配置。起步依赖用于降低项目依赖的复杂度，自动配置负责减少人工配置的工作量。 SpringBoot的自动配置建立在Spring已有的功能之上，通过巧妙的组合而来 @EnableAutoConfiguration前一篇留了一个注解没介绍，@EnableAutoConfiguration注解式">
+<meta name="twitter:description" content="SpringBoot之所以能够快速构建项目，得益于它的2个新特性，一个是起步依赖前面已经介绍过，另外一个则是自动配置。起步依赖用于降低项目依赖的复杂度，自动配置负责减少人工配置的工作量。 SpringBoot的自动配置建立在Spring已有的功能之上，通过巧妙的方式将他们组合起来。 @EnableAutoConfiguration前一篇留了一个注解没介绍，@EnableAutoConfigurat">
 
 
 
@@ -362,7 +362,7 @@
 
       
         <p>SpringBoot之所以能够快速构建项目，得益于它的2个新特性，一个是起步依赖前面已经介绍过，另外一个则是自动配置。起步依赖用于降低项目依赖的复杂度，自动配置负责减少人工配置的工作量。</p>
-<p>SpringBoot的自动配置建立在Spring已有的功能之上，通过巧妙的组合而来</p>
+<p>SpringBoot的自动配置建立在Spring已有的功能之上，通过巧妙的方式将他们组合起来。</p>
 <h2 id="EnableAutoConfiguration"><a href="#EnableAutoConfiguration" class="headerlink" title="@EnableAutoConfiguration"></a>@EnableAutoConfiguration</h2><p>前一篇留了一个注解没介绍，@EnableAutoConfiguration注解式开启自动配置的入口。其定义如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@AutoConfigurationPackage</span></span><br><span class="line"><span class="meta">@Import</span>(AutoConfigurationImportSelector.class)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> EnableAutoConfiguration &#123;</span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>看到@Import注解，参数是AutoConfigurationImportSelector类。</p>
@@ -395,7 +395,8 @@
 <p>不想配置就用SpringBoot默认的，想改了随时自定义，怎么用怎么舒服~</p>
 <h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><p>上面源码中标记了一个缓存。在读取META-INF/spring.factories文件后相关数据是会保存到SpringFactoriesLoader类的缓存中的。而这里第一次读取META-INF/spring.factories的时机并不是在自动配置这里，早在上一篇的SpringApplication构造方法中就已经缓存了：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">SpringApplication</span><span class="params">(ResourceLoader resourceLoader, Class&lt;?&gt;... primarySources)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.resourceLoader = resourceLoader;</span><br><span class="line">    Assert.notNull(primarySources, <span class="string">"PrimarySources must not be null"</span>);</span><br><span class="line">    <span class="keyword">this</span>.primarySources = <span class="keyword">new</span> LinkedHashSet&lt;&gt;(Arrays.asList(primarySources));</span><br><span class="line">    <span class="keyword">this</span>.webApplicationType = deduceWebApplicationType();</span><br><span class="line">    <span class="comment">// 设置初始化器，这里就已经读取了META-INF/spring.factories</span></span><br><span class="line">    setInitializers((Collection) getSpringFactoriesInstances(</span><br><span class="line">        ApplicationContextInitializer.class));</span><br><span class="line">    setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));</span><br><span class="line">    <span class="keyword">this</span>.mainApplicationClass = deduceMainApplicationClass();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这一节通过@EnableAutoConfiguration注解分析了SpringBoot自动配置的实现。可以理解为SpringBoot将Spring原有的功能做了一些组合，利用了@Import、条件注解等特性。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这一节通过@EnableAutoConfiguration注解分析了SpringBoot自动配置的实现。通过@Import注解添加自动配置选择器(AutoConfigurationImportSelector)，选择器中首先读取META-INF路径下的spring.factories文件。在spring.factories文件中，SpringBoot官方提供了许多常见组件的默认配置，以java配置类形式存在。在这些java配置类中又利用了Spring的条件注解，让我们可以在默认配置和自定义配置之间灵活切换。</p>
+<p>可以这么认为：SpringBoot在Spring原有的基础上，通过拼凑组合又实现了一个强大的特性——自动配置。</p>
 <p>自动配置让我们可以在不做任何配置的情况下直接使用一个新的类库（前提是足够普遍），也能满足我们自定义配置的需求。除此之外，我们还可以利用这个思路，实现具有团队特色的自动配置，让团队开发也更加高效。</p>
 
       
