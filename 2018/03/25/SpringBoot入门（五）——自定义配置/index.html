@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Prometheus">
 <meta property="og:description" content="大部分比萨店也提供某种形式的自动配置。你可以点荤比萨、素比萨、香辣意大利比萨，或者是自动配置比萨中的极品——至尊比萨。在下单时，你并没有指定具体的辅料，你所点的比萨种类决定了所用的辅料。但如果你想要至尊比萨上的全部辅料，还想要加墨西哥胡椒，又不想放蘑菇该怎么办？你偏爱辣食又不喜欢吃菌类，自动配置不适合你的口味，你就只能自己配置比萨了吗？当然不是，大部分比萨店会让你以菜单上已有的选项为基础进行定制">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-25T15:44:14.297Z">
+<meta property="og:updated_time" content="2018-03-25T15:46:03.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot入门（五）——自定义配置">
 <meta name="twitter:description" content="大部分比萨店也提供某种形式的自动配置。你可以点荤比萨、素比萨、香辣意大利比萨，或者是自动配置比萨中的极品——至尊比萨。在下单时，你并没有指定具体的辅料，你所点的比萨种类决定了所用的辅料。但如果你想要至尊比萨上的全部辅料，还想要加墨西哥胡椒，又不想放蘑菇该怎么办？你偏爱辣食又不喜欢吃菌类，自动配置不适合你的口味，你就只能自己配置比萨了吗？当然不是，大部分比萨店会让你以菜单上已有的选项为基础进行定制">
@@ -492,7 +492,7 @@
 </blockquote>
 <h3 id="去除指定的自动配置"><a href="#去除指定的自动配置" class="headerlink" title="去除指定的自动配置"></a>去除指定的自动配置</h3><p>用@EnableAutoConfiguration注解的exclude参数去除指定的自动配置：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.jdbc.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span>(exclude=&#123;DataSourceAutoConfiguration.class&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyConfiguration</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本节介绍了SpringBoot自定义配置的几种方式。通过属性外化，我们可以灵活选择不同的属性元来应对不同的场景。利用YAML可以让配置文件结构化更易于阅读，特别是有多层结构的属性。@ConfigurationProperties提供类型安全的属性使用方式，使用起来更加直观。组合使用YAML和@ConfigurationProperties相信能让项目的配置属性更加清晰。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本节介绍了SpringBoot自定义配置的几种方式。通过属性外化，我们可以灵活选择不同的属性元来应对不同的场景。利用YAML可以让配置文件结构化更易于阅读，特别是有多层结构的属性。@ConfigurationProperties提供类型安全的属性使用方式，使用起来更加直观。组合使用YAML和@ConfigurationProperties相信能让项目的配置变得更加清晰。</p>
 <p>SpringBoot不仅仅是帮助我们快速搭建一个可用的项目，在使用便利性上也提供了更多的姿势。</p>
 
       
