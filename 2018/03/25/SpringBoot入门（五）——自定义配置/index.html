@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Prometheus">
 <meta property="og:description" content="大部分比萨店也提供某种形式的自动配置。你可以点荤比萨、素比萨、香辣意大利比萨，或者是自动配置比萨中的极品——至尊比萨。在下单时，你并没有指定具体的辅料，你所点的比萨种类决定了所用的辅料。但如果你想要至尊比萨上的全部辅料，还想要加墨西哥胡椒，又不想放蘑菇该怎么办？你偏爱辣食又不喜欢吃菌类，自动配置不适合你的口味，你就只能自己配置比萨了吗？当然不是，大部分比萨店会让你以菜单上已有的选项为基础进行定制">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-25T15:46:03.341Z">
+<meta property="og:updated_time" content="2018-03-26T13:47:43.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot入门（五）——自定义配置">
 <meta name="twitter:description" content="大部分比萨店也提供某种形式的自动配置。你可以点荤比萨、素比萨、香辣意大利比萨，或者是自动配置比萨中的极品——至尊比萨。在下单时，你并没有指定具体的辅料，你所点的比萨种类决定了所用的辅料。但如果你想要至尊比萨上的全部辅料，还想要加墨西哥胡椒，又不想放蘑菇该怎么办？你偏爱辣食又不喜欢吃菌类，自动配置不适合你的口味，你就只能自己配置比萨了吗？当然不是，大部分比萨店会让你以菜单上已有的选项为基础进行定制">
@@ -364,7 +364,7 @@
         <blockquote>
 <p>大部分比萨店也提供某种形式的自动配置。你可以点荤比萨、素比萨、香辣意大利比萨，或者是自动配置比萨中的极品——至尊比萨。在下单时，你并没有指定具体的辅料，你所点的比萨种类决定了所用的辅料。但如果你想要至尊比萨上的全部辅料，还想要加墨西哥胡椒，又不想放蘑菇该怎么办？你偏爱辣食又不喜欢吃菌类，自动配置不适合你的口味，你就只能自己配置比萨了吗？当然不是，大部分比萨店会让你以菜单上已有的选项为基础进行定制。</p>
 </blockquote>
-<h2 id="外化属性"><a href="#外化属性" class="headerlink" title="外化属性"></a>外化属性</h2><h3 id="属性源"><a href="#属性源" class="headerlink" title="属性源"></a>属性源</h3><p>为了使应用能适应不同的环境，SpringBoot支持外化配置。可以使用.properties文件、YAML文件、环境变量、命令行参数等。</p>
+<h2 id="外化属性"><a href="#外化属性" class="headerlink" title="外化属性"></a>外化属性</h2><h3 id="属性源"><a href="#属性源" class="headerlink" title="属性源"></a>属性源</h3><p>为了使应用能适应不同的环境，SpringBoot支持外化配置。可以使用.properties文件、YAML文件、环境变量、命令行参数等方式。</p>
 <p>SpringBoot能从多种属性源获得属性，包括以下几处：</p>
 <ol>
 <li>命令行参数</li>
@@ -376,20 +376,21 @@
 <li>通过@propertySource标注的属性源</li>
 <li>默认属性</li>
 </ol>
-<p>优先级由高到低，即在上面的列表中命令行参数的优先级最高，会覆盖下面其他属性源的相同配置。</p>
+<p>优先级由高到低，即在上面的列表中“命令行参数”的优先级最高，会覆盖下面其他属性源的相同配置。</p>
 <blockquote>
 <p>这里只挑选了部分比较常见的属性源，详细信息可以参考官网教程：<a href="https://docs.spring.io/spring-boot/docs/2.0.1.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-external-config" target="_blank" rel="noopener">24. Externalized Configuration</a></p>
 <p>默认情况下SpringApplication将任何可选的命令行参数（以’–’开头，比如，–server.port=9000）转化为property，并将其添加到Spring Environment中。如上所述，命令行属性总是优先于其他属性源。</p>
 <p>如果不想用这个特性可以用SpringApplication.setAddCommandLineProperties(false)来禁用。</p>
 </blockquote>
-<h3 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h3><p>SpringBoot支持.yml格式的配置文件，是一种更易读写的通用的数据串行化格式。</p>
-<p>在SpringBoot中.yml效果相当于.properties，二者是可以互相替换的，比如下面2中方式在Spring中是等效的：</p>
+<h3 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h3><p>SpringBoot支持YAML格式的配置文件文件后缀为yml，是一种更易读写的通用的数据串行化格式。</p>
+<p>在SpringBoot中.yml效果相当于.properties，通常情况下二者是可以互相替换的，比如下面2种配置文件在SpringBoot中是等效的：</p>
 <p>application.properties</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">server.port=8020</span><br><span class="line">server.address=127.0.0.1</span><br></pre></td></tr></table></figure>
 <p>application.yml</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">8020</span></span><br><span class="line"><span class="attr">  address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+<p>.yml文件在配置数据的时候具有面向对象的特性，更易阅读。</p>
 <blockquote>
-<p>虽然.yml配置和.properties基本等效，但是.yml配置不能用@propertySource注解加载。</p>
+<p>虽然.yml配置和.properties基本等效，但也有略微区别，.yml配置不能用@propertySource注解加载。</p>
 </blockquote>
 <h3 id="Application属性文件"><a href="#Application属性文件" class="headerlink" title="Application属性文件"></a>Application属性文件</h3><p>SpringBoot会从以下位置加载.properties或.yml配置文件：</p>
 <ol>
@@ -398,13 +399,14 @@
 <li>classpath下的/config目录</li>
 <li>classpath的根目录</li>
 </ol>
-<p>优先级也是从高到低。</p>
+<p>优先级也是从高到低，高优先级的配置文件会覆盖低优先级的配置。</p>
 <p>使用.properties或.yml配置文件可以对SpringBoot的自动配置进行覆盖，比如在默认的情况下http端口为8080，我们可以像上面的例子那样在修改为8020。</p>
-<p>SpringBoot提供了上百个这样可以覆盖的配置，具体可以查阅官网或者查看autoconfiguration包的的META-INF/spring-configuration-metadata.json和META-INF/additional-spring-configuration-metadata.json（这2个文件是提供给IDE做提示用的）。</p>
+<p>SpringBoot提供了上百个这样可以覆盖的配置，具体可以查阅官网或者查看autoconfiguration包的的META-INF/spring-configuration-metadata.json和META-INF/additional-spring-configuration-metadata.json文件（这2个文件用来给IDE做输入提示用，有一些简单的描述）。</p>
 <h3 id="类型安全的配置属性"><a href="#类型安全的配置属性" class="headerlink" title="类型安全的配置属性"></a>类型安全的配置属性</h3><p>有时候使用@Value(“#{property}”)注解注入配置会比较笨重，SpringBoot提供一个类型安全的方案，用强类型的Bean对象来替代属性。</p>
+<p>@ConfigurationProperties用法如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"acme"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AcmeProperties</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> enabled;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Security security = <span class="keyword">new</span> Security();</span><br><span class="line">	<span class="comment">// 省略getter、setter</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Security</span> </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> String username;</span><br><span class="line">		<span class="keyword">private</span> String password;</span><br><span class="line">		<span class="keyword">private</span> List&lt;String&gt; roles = <span class="keyword">new</span> ArrayList&lt;&gt;(Collections.singleton(<span class="string">"USER"</span>));</span><br><span class="line">		<span class="comment">// 省略getter、setter</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>@ConfigurationProperties的参数prefix表示前缀，AcmeProperties里的每个属性的名称便是具体的配置名。比如enabled表示绑定配置acme.enabled。</p>
-<p>上面这个例子表示AcmeProperties对象可以绑定下列配置：</p>
+<p>@ConfigurationProperties的参数prefix表示前缀，AcmeProperties里的每个属性的名称便是具体的配置名。比如成员变量enabled绑定属性acme.enabled。</p>
+<p>上面这个例子表示AcmeProperties对象分别绑定下列属性：</p>
 <ul>
 <li>acme.ebalbe：布尔类型</li>
 <li>acme.security.username：String类型</li>
@@ -413,7 +415,7 @@
 </ul>
 <p>绑定配置之后还需要注册Spring上下文中，有3种方式：</p>
 <ol>
-<li>使用@EnableConfigurationProperties注解激活</li>
+<li>在java配置类中用@EnableConfigurationProperties注解激活</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties</span>(AcmeProperties.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyConfiguration</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol>
@@ -425,7 +427,7 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> AnotherComponent <span class="title">anotherComponent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注册之后，可以在任意地方使用@Autowire注解注入使用。</p>
-<h3 id="松散的绑定-Relaxed-binding"><a href="#松散的绑定-Relaxed-binding" class="headerlink" title="松散的绑定(Relaxed binding)"></a>松散的绑定(Relaxed binding)</h3><p>Spring Boot使用一些宽松的规则用于绑定Environment属性到@ConfigurationProperties beans，所以Environment属性名和bean属性名不需要精确匹配。常见的示例中有用的包括虚线分割（比如，context–path绑定到contextPath）和将环境属性转为大写字母（比如，PORT绑定port）。</p>
+<h3 id="松散的绑定-Relaxed-binding"><a href="#松散的绑定-Relaxed-binding" class="headerlink" title="松散的绑定(Relaxed binding)"></a>松散的绑定(Relaxed binding)</h3><p>Spring Boot使用一些宽松的规则用于绑定Environment属性到@ConfigurationProperties beans，所以Environment属性名和bean属性名不需要精确匹配。常见的有虚线匹配大写（比如，context-path绑定到contextPath）和将环境属性转为大写字母（比如，PORT绑定port）。</p>
 <p>比如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix=<span class="string">"acme.my-project.person"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OwnerProperties</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String firstName;</span><br><span class="line">	<span class="comment">// 省略getter、setter</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以绑定到：</p>
